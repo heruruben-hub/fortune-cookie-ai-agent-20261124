@@ -11,6 +11,8 @@ FORTUNE = "A long life awaits you \u2014 in the changelog, under \u2018deprecate
 
 
 def main() -> None:
+    if not 1 <= len(FORTUNE) <= 140 or "\n" in FORTUNE:
+        raise ValueError("fortune must be one line of 1-140 characters")
     os.makedirs("/output", exist_ok=True)
     with open("/output/entry.txt", "w", encoding="utf-8") as f:
         f.write(FORTUNE)
